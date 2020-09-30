@@ -18,14 +18,13 @@ function [fitresult, gof] = createFit(CycleNo, ActualSOH)
 
 
 %% Fit: 'untitled fit 1'.
-[xData, yData, weights] = prepareCurveData( CycleNo, ActualSOH, ActualSOH );
+[xData, yData] = prepareCurveData( CycleNo, ActualSOH );
 
 % Set up fittype and options.
-ft = fittype( 'poly9' );
+ft = fittype( 'poly7' );
 opts = fitoptions( ft );
-opts.Lower = [-Inf -Inf -Inf -Inf -Inf -Inf -Inf -Inf -Inf -Inf];
-opts.Upper = [Inf Inf Inf Inf Inf Inf Inf Inf Inf Inf];
-opts.Weights = weights;
+opts.Lower = [-Inf -Inf -Inf -Inf -Inf -Inf -Inf -Inf];
+opts.Upper = [Inf Inf Inf Inf Inf Inf Inf Inf];
 opts.Normalize = 'on';
 
 % Fit model to data.
@@ -34,10 +33,8 @@ opts.Normalize = 'on';
 % Plot fit with data.
 figure( 'Name', 'untitled fit 1' );
 h = plot( fitresult, xData, yData );
-legend( h, 'ActualSOH vs. CycleNo with ActualSOH', 'untitled fit 1', 'Location', 'NorthEast' );
+legend( h, 'ActualSOH vs. CycleNo', 'untitled fit 1', 'Location', 'NorthEast' );
 % Label axes
 xlabel( 'CycleNo' );
 ylabel( 'ActualSOH' );
 grid on
-
-
