@@ -1,7 +1,10 @@
 function [fitresult, gof] = createFit(CycleNo, ActualSOH)
 %CREATEFIT(CYCLENO,ACTUALSOH)
 %  Create a fit.
-%
+% code applicable for LFP type batteries only
+% Constant temperature of 300K is assumed
+% final expression for SoH prediction = y = - 0.44*z^{9} - 0.24*z^{8} + 2.5*z^{7} + 0.86*z^{6} - 4.7*z^{5} - 0.87*z^{4} + 3.2*z^{3} + 0.65*z^{2} - 7*z + 90
+% where z = (x - 1.2e+03)/6.7e+02, where x is the number of cycles elapsed
 %  Data for 'untitled fit 1' fit:
 %      X Input : CycleNo
 %      Y Output: ActualSOH
